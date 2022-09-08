@@ -1,0 +1,23 @@
+version: '3.3'
+services:
+  eureka-server-0.0.1-snapshot:
+    build:
+      context: C:\Users\vgg4286\IdeaProjects\eureka-server
+    expose:
+      - 8761
+    networks:
+      - spring-cloud-network
+
+  first-0.0.1-snapshot:
+    links:
+      -  eureka-server-0.0.1-snapshot
+    container_name: first-0.0.1-snapshot
+    build:
+      context: C:\Users\vgg4286\IdeaProjects\first
+    expose:
+      - 8887
+    networks:
+      - spring-cloud-network
+
+networks:
+  spring-cloud-network:
